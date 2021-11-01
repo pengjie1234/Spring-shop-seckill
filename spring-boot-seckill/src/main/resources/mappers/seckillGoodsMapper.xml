@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.duing.mapper.SeckillGoodsMapper">
+    <select id="getSeckillGoodsById" resultType="com.duing.model.SeckillGoods">
+        select id,goods_id,seckill_price,stock_num,start_time,end_time from seckill_goods
+    </select>
+</mapper>

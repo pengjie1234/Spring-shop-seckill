@@ -1,9 +1,10 @@
 package com.duing.services;
-
-import com.duing.model.Goods;
+import com.duing.vo.GoodsDateilVo;
+import com.duing.vo.GoodsVo;
 
 import java.util.List;
 
 public interface GoodsService {
-    List<Goods> getGoods();
+    List<GoodsVo> getGoods();
+    GoodsDateilVo getGoodsDateil(String goodsId);
 }
