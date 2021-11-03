@@ -14,4 +14,6 @@ public class Goods {
     private String goods_type;
     private Double price;
     private String img_path;
+
+    private SeckillGoods seckillGoods;
 }

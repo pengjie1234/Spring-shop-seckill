@@ -3,14 +3,51 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.duing.mapper.GoodsMapper">
-<!--    查询所有-->
+<!--    查询所有 单表查询-->
     <select id="getGoods" resultType="com.duing.model.Goods">
         select id,goods_id,goods_name,goods_type,price,img_path from goods
     </select>
 
-<!-- 根据goodsId查询goods-->
-    <select id="getGoodsById" resultType="com.duing.model.Goods">
-        select id,goods_id,goods_name,goods_type,price,img_path from goods where goods_id = #{goodsId}
+
+<!--联合查询-->
+    <resultMap id="goodsResult" type="Goods">
+        <id property="id" column="id"/>
+        <result property="goods_id" column="goods_id"/>
+        <result property="goods_name" column="goods_name"/>
+        <result property="goods_type" column="goods_type"/>
+        <result property="price" column="price"/>
+        <result property="img_path" column="img_path"/>
+        <association property="seckillGoods" javaType="com.duing.model.SeckillGoods">
+            <result property="seckill_price" column="seckill_price"/>
+            <result property="stock_num" column="stock_num"/>
+        </association>
+    </resultMap>
+    <select id="selectGoods" resultMap="goodsResult">
+        SELECT b.goods_id,b.goods_name,b.goods_type,b.price,b.img_path,a.seckill_price,a.stock_num FROM
+        seckill_goods as a left join goods as b on a.goods_id = b.goods_id;
+    </select>
+
+
+
+<!-- 根据goodsId单表查询goods-->
+<!--    <select id="getGoodsById" resultType="com.duing.model.Goods">-->
+<!--        select id,goods_id,goods_name,goods_type,price,img_path from goods where goods_id = #{goodsId}-->
+<!--    </select>-->
+    <resultMap id="selectGoodsAndSeckillGoods" type="Goods">
+        <result property="goods_id" column="goods_id"/>
+        <result property="goods_name" column="goods_name"/>
+        <result property="price" column="price"/>
+        <result property="img_path" column="img_path"/>
+        <association property="seckillGoods" javaType="com.duing.model.SeckillGoods">
+            <result property="seckill_price" column="seckill_price"/>
+            <result property="stock_num" column="stock_num"/>
+            <result property="start_time" column="start_time"></result>
+            <result property="end_time" column="end_time"></result>
+        </association>
+    </resultMap>
+    <select id="getGoodsById" resultMap="selectGoodsAndSeckillGoods">
+        select a.goods_id,a.goods_name,a.price,a.img_path,b.seckill_price,b.stock_num,b.start_time,b.end_time
+        from goods as a left join seckill_goods as b on a.goods_id = b.goods_id where a.goods_id = #{goodsId}
     </select>
 
 

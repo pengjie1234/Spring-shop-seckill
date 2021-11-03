@@ -7,4 +7,5 @@ import java.util.List;
 public interface GoodsService {
     List<GoodsVo> getGoods();
     GoodsDateilVo getGoodsDateil(String goodsId);
+    List<GoodsVo> selectOne();
 }

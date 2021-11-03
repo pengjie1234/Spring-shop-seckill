@@ -7,4 +7,5 @@ import java.util.List;
 @Mapper
 public interface SeckillGoodsMapper {
     SeckillGoods getSeckillGoodsById(String goodsId);
+    List<SeckillGoods> findSeckillGoods();
 }

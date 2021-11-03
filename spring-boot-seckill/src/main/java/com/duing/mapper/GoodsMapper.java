@@ -9,6 +9,6 @@ import java.util.List;
 @Mapper
 public interface GoodsMapper {
     List<Goods> getGoods();
-
+    List<Goods> selectGoods();
     Goods getGoodsById(String goodsId);
 }
