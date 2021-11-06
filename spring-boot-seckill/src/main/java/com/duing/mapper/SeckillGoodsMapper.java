@@ -8,4 +8,5 @@ import java.util.List;
 public interface SeckillGoodsMapper {
     SeckillGoods getSeckillGoodsById(String goodsId);
     List<SeckillGoods> findSeckillGoods();
+    void reduceStockNum(SeckillGoods seckillGoods);
 }

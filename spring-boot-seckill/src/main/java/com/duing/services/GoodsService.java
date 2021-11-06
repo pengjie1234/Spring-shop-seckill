@@ -8,4 +8,5 @@ public interface GoodsService {
     List<GoodsVo> getGoods();
     GoodsDateilVo getGoodsDateil(String goodsId);
     List<GoodsVo> selectOne();
+    void reduceStockNum(String goodsId);
 }

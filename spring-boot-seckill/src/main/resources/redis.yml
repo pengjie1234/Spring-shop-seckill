@@ -1,17 +1,18 @@
 
-
+#   jedis连接池配置
 spring:
   redis:
     jedis:
       pool:
-
+#        最大连接数，默认为8
         max-active: 8
-
+#        等待时间为负数，是无限
         max-wait: -1
+#        最大空闲时间连接
         max-idle: 8
-
+#        lettuce连接池配置
     lettuce:
       pool:
         min-idle: 0
-
+#        连接超时时间
     timeout: 5000

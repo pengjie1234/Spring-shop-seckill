@@ -9,4 +9,8 @@
     <select id="findSeckillGoods" resultType="com.duing.model.SeckillGoods">
         select id,goods_id,seckill_price,stock_num,start_time,end_time from seckill_goods
     </select>
+    <update id="reduceStockNum">
+        update seckill_goods SET stock_num = #{stock_num}
+        where goods_id = #{goods_id}
+    </update>
 </mapper>
